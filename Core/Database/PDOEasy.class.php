@@ -121,25 +121,29 @@ class PDOEasy
     }
 
     /**
-     * @return object Objeto PDO
+     * @return object||null Objeto PDO
      */
     private function connect()
     {
         try {
 
-            $options = [
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8",
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_CASE => PDO::CASE_NATURAL,
-            ];
+            $PDO = new PDO(
+                'mysql:host=' . DBCONFIG['host'] . ';dbname=' . DBCONFIG['db'] . ';',
+                DBCONFIG['user'],
+                DBCONFIG['psw'],
+                [
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8",
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_CASE => PDO::CASE_NATURAL,
+                ]
+            );
 
-            $dsn = 'mysql:host=' . DBCONFIG['host'] . ';dbname=' . DBCONFIG['db'] . ';';
-            $pdo = new PDO($dsn, DBCONFIG['user'], DBCONFIG['psw'], $options);
-        } catch (PDOException $error) {
-            $this->error = $error;
-            die;
+        } catch (PDOException $exception) {
+            $this->error = $exception;
+            return null;
         }
-        return $pdo;
+
+        return $PDO;
     }
 }
