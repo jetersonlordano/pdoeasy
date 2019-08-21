@@ -70,9 +70,9 @@ class PDOEasy
     /**
      * SQL Copy from one table to another
      */
-    public function copy(string $table, string $fields, string $selectFields, string $seelctTable, string $terms = null)
+    public function copy(string $table, string $fields, string $fieldsSelect, string $tableSelect, string $terms = null)
     {
-        $this->query = "INSERT INTO {$table} ({$fields}) SELECT {$selectFields} FROM {$seelctTable} {$terms}";
+        $this->query = "INSERT INTO {$table} ({$fields}) SELECT {$fieldsSelect} FROM {$tableSelect} {$terms}";
     }
 
     /**
@@ -84,12 +84,21 @@ class PDOEasy
     }
 
     /**
-     * Conta colunas encontradas na consulta
      * @return int
      */
     public function rowCount()
     {
         return $this->statement->rowCount();
+    }
+
+    /**
+     * Replace prefixes
+     */
+    public function prefixes(array $pfx)
+    {
+        foreach ($pfx as $key => $value) {
+            $this->query = str_replace($key, $value, $this->query);
+        }
     }
 
     /**
@@ -104,7 +113,7 @@ class PDOEasy
         }
 
         $this->statement = $this->connection->prepare($this->query);
-
+        
         foreach ($this->params ?? [] as $key => $vl) {
             $this->statement->bindParam(":" . $key, $this->params[$key], PDO::PARAM_STR);
         }
@@ -121,7 +130,7 @@ class PDOEasy
     }
 
     /**
-     * @return object||null Objeto PDO
+     * @return PDO||null
      */
     private function connect()
     {
