@@ -4,7 +4,7 @@
 
 PDOEasy é uma classe PHP para realizar ações básicas em um banco de dados usando SQL de forma simplificada. A PDOEasy trata e valida todas as informações antes de cada ação na base de dados. A classe é uma abstração da extensão PDO do PHP que é reconhecida por ser muito segura e de fácil implementação.
 
-## Installation
+## Configuration
 
 ###### Set above the following constant with the database settings you want to connect.
 
