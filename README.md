@@ -47,7 +47,7 @@ $conn = new PDOEasy();
 
 Selecionar todos os dados da tabela students
 
-```bash
+```sql
 SELECT * FROM students
 ```
 
