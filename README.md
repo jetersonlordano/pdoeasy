@@ -28,7 +28,7 @@ Seguindo uma boa pratica, você pode criar estas informações em arquivo de con
 
 ###### Remember to download and include the 'Database' folder in your project.
 
-Lembre-se de baixar e incluir a pasta 'Database' em seu projeto
+### Lembre-se de baixar e incluir a pasta 'Database' em seu projeto
 
 ## Examples
 
