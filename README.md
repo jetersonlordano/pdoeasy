@@ -26,6 +26,10 @@ define('DBCONFIG', [
 ###### Following good practice, you can create this information in your project's configuration file.
 Seguindo uma boa pratica, você pode criar estas informações em arquivo de configuração do seu projeto.
 
+###### Remember to download and include the 'Database' folder in your project.
+
+Lembre-se de baixar e incluir a pasta 'Database' em seu projeto
+
 ## Examples
 
 ###### You can instantiate PDOEasy only once per file to make good memory use.

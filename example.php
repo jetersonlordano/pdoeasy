@@ -15,7 +15,7 @@ define('DS', DIRECTORY_SEPARATOR);
 // Autoloader de classes
 spl_autoload_register(
     function ($class) {
-        $file = __DIR__ . DS . 'Core' . DS . $class . '.class.php';
+        $file = __DIR__  . DS . $class . '.class.php';
         $file = str_replace("\\", DS, $file);
         file_exists($file) ? include_once $file : die("Erro ao incluir: {$class}.class.php");
     }
