@@ -144,13 +144,13 @@ $conn->exec();
 
 ?>
 ```
-###### Exec () method returns true or false for action
+###### exec() method returns true or false for action
 
 O metodo exec() returna verdadeiro ou falso para a ação
 
 ## Exception
 
-###### Use error () method to debug class
+###### Use error() method to debug class
 
 Use o metodo error() para debugar a classe
 
