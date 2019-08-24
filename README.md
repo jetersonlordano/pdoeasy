@@ -60,3 +60,108 @@ $students = $conn->fetchAll();
 
 ?>
 ```
+
+###### Select id and table name students where email is mary@email.com and name is Mary
+
+Selecionar o id e o nome da tabela students onde o email é mary@email.com e o nome é Mary
+
+```sql
+SELECT std_id, std_name FROM students WHERE std_email = 'mary@email.com' AND std_name = 'Mary' LIMIT 1
+```
+
+```php
+<?php
+
+$terms = "WHERE std_email = :email AND std_name = :name LIMIT 1";
+$values = ['email' => 'mary@email.com', 'name' => 'Mary'];
+$conn->select('students', 'std_id, std_name', $terms, $values);
+$conn->exec();
+$students = $conn->fetchAll();
+
+?>
+```
+
+###### Join two or more tables
+
+Fazer uma junção de duas ou mais tabelas
+
+```sql
+SELECT std_name, crs_name FROM students INNER JOIN courses on courses.crs_id = students.std_course
+```
+
+```php
+<?php
+
+$terms = "INNER JOIN courses on courses.crs_id = students.std_course";
+$conn->select('students', 'std_name, crs_name', $terms);
+$conn->exec();
+$students = $conn->fetchAll();
+
+?>
+```
+
+###### Insert data into students table
+
+Inserir dados na tabela students
+
+```php
+<?php
+
+$conn->insert('students', ['std_name' => 'José Carlos', 'std_email' => 'josecarlos@email.com']);
+$conn->exec();
+
+?>
+```
+
+###### Update data in students table
+
+Atualizar dados na tabela students
+
+```php
+<?php
+
+$terms = "std_name = :name, std_email = :email WHERE std_id = :id LIMIT 1";
+$values = [
+    'name' => 'Jhon',
+    'email' => 'Jhon@email.com',
+    'id' => 1,
+];
+$conn->update('students', $terms, $values);
+$conn->exec();
+
+?>
+```
+
+###### Delete data in students table
+
+Deletar dados na tabela students
+
+```php
+<?php
+
+$conn->delete('students', "WHERE std_id = :id LIMIT 1", [ 'id' => 1]);
+$conn->exec();
+
+?>
+```
+###### Exec () method returns true or false for action
+
+O metodo exec() returna verdadeiro ou falso para a ação
+
+## Exception
+
+###### Use error () method to debug class
+
+Use o metodo error() para debugar a classe
+
+```php
+<?php
+
+var_dump($conn->error());
+
+?>
+```
+
+## Author
+
+- [Jeterson Lordano](https://github.com/jetersonlordano) (Developer)
