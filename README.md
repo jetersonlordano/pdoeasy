@@ -164,4 +164,5 @@ var_dump($conn->error());
 
 ## Author
 
-- [Jeterson Lordano](https://github.com/jetersonlordano) (Developer)
+- [Jeterson Lordano](https://github.com/jetersonlordano)
+- [Website](https://www.jetersonlordano.com.br)
